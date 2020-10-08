@@ -1,8 +1,59 @@
 import React , {useState, useEffect, useRef} from 'react'
 import API_KEY from '../Api/API_KEY'
+import styled from 'styled-components'
 import axios from 'axios'
 
+const DivContainer = styled.div`
+    height:100%;
+    background-color: #1d1f21;
+    color: #e9edf2;
+    h1 {
+        font-size: 3rem;
+        padding:1rem 0;
+        margin:0;
+    }
+    h3 {
+        margin:0;
+        padding:1rem 0;
+    }
+    
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 
+    form {
+        input {
+            padding:.5rem;
+            border-radius:.5rem;
+            margin: 0 .3rem;
+        }
+        button {
+            border:none;
+            padding:.5rem;
+            border-radius:.5rem;
+        }
+        
+    }
+`
+
+const TextContainer = styled.div`
+    width: 50%;
+    background:#e9edf2;
+    color:#1d1f21;
+    text-align:left;
+    padding:1rem;
+    border-radius:1rem;
+`
+
+const PictureContainer = styled.div`
+    width:45%;
+    margin:1rem 0;
+    img {
+        border-radius:2rem;
+    }
+    
+`
 
 function NasaApi() {
 
@@ -44,22 +95,20 @@ function NasaApi() {
     }
 
     return (
-        <div>
+        <DivContainer>
             <h1>{nasaData.title}</h1>
-            <h2>Date</h2>
-            <h3>{nasaData.date}</h3>
             <form onSubmit={textInputFunction}>
-            <label htmlFor='todo-text'>Search for date</label>
             <input type='text' placeholder='YYYY-MM-DD' ref={textInputRef}/>
-            <button type='submit' onKeyDown={handleKeyDown} >Search</button>
+            <button type='submit' onKeyDown={handleKeyDown} >Search for date</button>
             </form>
-            <div>
+            <PictureContainer>
                 <img src={nasaData.hdurl} />
-            </div>
-            <div>
-                {nasaData.explanation}
-            </div> 
-        </div>
+            </PictureContainer>
+            <TextContainer>
+                <h3>Date: {nasaData.date}</h3>
+                <p>{nasaData.explanation}</p>   
+            </TextContainer> 
+        </DivContainer>
     )
 }
 

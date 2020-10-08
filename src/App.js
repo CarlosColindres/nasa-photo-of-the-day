@@ -1,12 +1,16 @@
 import React from "react";
-import "./App.css";
 import NasaApi from "./components/NasaApi";
+import styled from 'styled-components'
+
+const AppContainer = styled.div`
+  height:100%;
+`
 
 function App() {
   return (
-    <div className="App">
+    <AppContainer className="App">
       <NasaApi />
-    </div>
+    </AppContainer>
   );
 }
 
